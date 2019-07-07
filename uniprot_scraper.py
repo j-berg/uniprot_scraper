@@ -164,16 +164,17 @@ solo = input('Does this column contain any other annotations beside the UNIPROT 
 if solo == 'yes':
     remove = input('Please provide the text ahead of the UNIPROT ID (note, any special characters must be preceded by a \"\\\"): ').replace(' ','')
 
-    data[column] = data[column].str.replace(remove,'')
-    data[column] = data[column].str[:6]
+    data['uniprot_id'] = data[column]
+    data['uniprot_id'] = data['uniprot_id'].str.replace(remove,'')
+    data['uniprot_id'] = data['uniprot_id'].str[:6]
 
 multi = input('Would you like to multiprocess (multiprocessing will speed up performance of the scraper but may slow down other operations on your machine)? (yes/no): ').lower().replace(' ','')
 
 # Get UNIPROT gene summary
-id_loc = data.columns.get_loc(column)
+id_loc = data.columns.get_loc('uniprot_id')
 data['summary'] = ''
 
-print('\nProcessing table...')
+print('\nProcessing ' + str(file) + '...')
 print('This may take a couple of minutes to fetch the summary data from UniProt')
 print('Note: If your computer is multiprocessing this job, the progress bar will\nappear to jump back and forth slightly...')
 
