@@ -15,3 +15,10 @@ python uniprot_scraper.py
 ```
 Then follow the prompts...
 
+### Notes
+- If the column where the UniProt IDs are found has other characters besides the UniProt ID, the prompter will ask you what the characters before the ID are. 
+Example:
+```
+sp|P19283|gene_name
+```
+- For the example above you would provide `sp\|` as input. Note that special characters, such as `|` must be pre-pended with a `\`
