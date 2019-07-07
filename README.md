@@ -3,15 +3,17 @@ Get UniProt summaries for genes appended to dataframe
 
 Example:   
 ```
-UniProtID   ...
-P#####      ...
-P#####      ...
+UniProtID   |   ...
+------------|------
+P#####      |   ...
+P#####      |   ...
 ```
 Will output:   
 ```
-UniProtID   ...   Summary
-P#####      ...   Info1
-P#####      ...   Info2  
+UniProtID   |   ...   |   Summary
+------------|---------|----------
+P#####      |   ...   |   Info1
+P#####      |   ...   |   Info2  
 ```
 
 ### Installation
