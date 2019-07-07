@@ -1,6 +1,18 @@
 # UniProt Scraper
-Get UniProt summaries for genes appended to dataframe
+Get UniProt summaries for genes appended to dataframe    
 
+Example:   
+```
+UniProtID   ...
+P#####      ...
+P#####      ...
+```
+Will output:   
+```
+UniProtID   ...   Summary
+P#####      ...   Info1
+P#####      ...   Info2  
+```
 
 ### Installation
 Install dependencies:
@@ -17,7 +29,7 @@ Then follow the prompts...
 
 ### Notes
 - If the column where the UniProt IDs are found has other characters besides the UniProt ID, the prompter will ask you what the characters before the ID are. 
-Example:
+Example:   
 ```
 sp|P19283|gene_name
 ```
