@@ -162,7 +162,7 @@ if solo == 'yes':
     data[column] = data[column].str.replace(remove,'')
     data[column] = data[column].str[:6]
 
-multi = input('Would you like to multiprocess (multiprocessing will speed up performance of the scraper but may slow down other operations on your machine)? (yes/no)': ).lower()
+multi = input('Would you like to multiprocess (multiprocessing will speed up performance of the scraper but may slow down other operations on your machine)? (yes/no): ').lower()
 
 # Get UNIPROT gene summary
 id_loc = data.columns.get_loc(column)
