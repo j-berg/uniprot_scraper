@@ -5,7 +5,7 @@ Get UniProt summaries for genes appended to dataframe
 ### Installation
 Install dependencies:
 ```
-pip install pandas html2text
+pip install pandas numpy html2text
 ```
 
 ### Run
