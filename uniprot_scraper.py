@@ -107,7 +107,7 @@ def scrape(uniprot_id):
             if '</html>' in page[line]:
                 break
 
-            if 'This section provides any useful information about the protein, mostly biological knowledge' in page[line] or 'This subsection of the ‘Pathology and Biotech’ section provides information' in page[line]:
+            if "This section provides any useful information about the protein, mostly biological knowledge" in page[line] or "This subsection of the 'Pathology and Biotech' section provides information" in page[line]:
                 return html2text.html2text(page[line].split("Function<sup>i</sup>")[1])
     except:
         print('Could not find annotations for ' + str(uniprot_id))
