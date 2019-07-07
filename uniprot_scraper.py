@@ -151,10 +151,10 @@ def make_chunks(data):
 
 # Get file
 file = input('Please provide the full path and filename of the file you would like to work with: ')
+data, sep = get_file(str(file))
+
 column = input('What is the name of the column containing the UNIPROT IDs (case-sensitive)?: ')
 solo = input('Does this column contain any other annotations beside the UNIPROT ID? (yes/no): ').lower()
-
-data, sep = get_file(str(file))
 
 if solo == 'yes':
     remove = input('Please provide the text ahead of the UNIPROT ID (note, any special characters must be proceded by a \"\\\"): ')
