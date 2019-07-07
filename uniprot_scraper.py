@@ -151,18 +151,23 @@ def make_chunks(data):
 
 # Get file
 file = input('Please provide the full path and filename of the file you would like to work with: ')
+if ' ' in file:
+    print('Error: spaces in file names not allowed')
+    sys.exit(1)
+
 data, sep = get_file(str(file))
 
-column = input('What is the name of the column containing the UNIPROT IDs (case-sensitive)?: ')
-solo = input('Does this column contain any other annotations beside the UNIPROT ID? (yes/no): ').lower()
+# Get table info for parsing and cleaning
+column = input('What is the name of the column containing the UNIPROT IDs (case-sensitive)?: ').replace(' ','')
+solo = input('Does this column contain any other annotations beside the UNIPROT ID? (yes/no): ').lower().replace(' ','')
 
 if solo == 'yes':
-    remove = input('Please provide the text ahead of the UNIPROT ID (note, any special characters must be proceded by a \"\\\"): ')
+    remove = input('Please provide the text ahead of the UNIPROT ID (note, any special characters must be preceded by a \"\\\"): ').replace(' ','')
 
     data[column] = data[column].str.replace(remove,'')
     data[column] = data[column].str[:6]
 
-multi = input('Would you like to multiprocess (multiprocessing will speed up performance of the scraper but may slow down other operations on your machine)? (yes/no): ').lower()
+multi = input('Would you like to multiprocess (multiprocessing will speed up performance of the scraper but may slow down other operations on your machine)? (yes/no): ').lower().replace(' ','')
 
 # Get UNIPROT gene summary
 id_loc = data.columns.get_loc(column)
@@ -170,7 +175,7 @@ data['summary'] = ''
 
 print('\nProcessing table...')
 print('This may take a couple of minutes to fetch the summary data from UniProt')
-print('Note: If your computer is multiprocessing this job, the progress bar will appear to jump back and forth slightly')
+print('Note: If your computer is multiprocessing this job, the progress bar will\nappear to jump back and forth slightly...')
 
 if multi == 'yes':
     # Split dataframe up
