@@ -148,8 +148,11 @@ def make_chunks(data):
     return chunks
 
 
-
+"""
+MAIN
+"""
 # Get file
+print('')
 file = input('Please provide the full path and filename of the file you would like to work with: ')
 if ' ' in file:
     print('Error: spaces in file names not allowed')
@@ -196,6 +199,9 @@ if multi == 'yes':
 
 else:
     data = run_scraper(data)
+
+print('')
+print('Scraping complete.')
 
 data['summary'] = data['summary'].str.replace('\n', ' ')
 
