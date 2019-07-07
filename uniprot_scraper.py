@@ -28,6 +28,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+import sys
 import pandas as pd
 pd.options.mode.chained_assignment = None
 import csv
@@ -43,7 +44,9 @@ import gc
 def get_file(file):
 
     if file.endswith('.csv'):
-        sep = ','
+        print('Error: comma-separated tables not allowed. Please provide a tab-delimited table with the suffix .txt or .tsv')
+        print('Exiting...')
+        sys.exit(1)
     else:
         sep = '\t'
 
@@ -131,10 +134,12 @@ if __name__ == 'uniprot_scraper':
 
     # Merge
     data = pd.concat(chunks)
+    data.tail()
+
+    data['summary'] = data['summary'].str.replace('\n', ' ')
 
     # Output
     data.to_csv(
         str(file)[:-4] + '_annotated' + str(file)[-4:],
         sep = sep,
-        index = False,
-        quoting = csv.QUOTE_NONE)
+        index = False)
