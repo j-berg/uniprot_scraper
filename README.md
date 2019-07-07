@@ -16,6 +16,9 @@ P#####      |   ...   |   Info1
 P#####      |   ...   |   Info2  
 ```
 
+### Requirements:
+- Python3
+
 ### Installation
 Install dependencies:
 ```
